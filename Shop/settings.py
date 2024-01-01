@@ -96,12 +96,12 @@ WSGI_APPLICATION = 'Shop.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', 
-        'NAME': 'postgresaer_db',
-        'USER': 'postgres',
-        'PASSWORD': 'tvxOs%TUnnj425UMFsKm',
-        'HOST': 'postgresql-sod-service',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'mysqljby_db',
+        'USER': 'root',
+        'PASSWORD': 'h1dfA3P5ULmhteWf!HUs',
+        'HOST': 'mysql-sfa-service',
+        'PORT': '3306',
     }
 }
 
