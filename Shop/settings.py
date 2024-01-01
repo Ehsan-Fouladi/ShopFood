@@ -16,9 +16,9 @@ SECRET_KEY = config("SECRET_KEY")
 # DEBUG = False # new add github
 DEBUG = True
 
-# ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
-# CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
+CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
+# ALLOWED_HOSTS = []
 # SECURE_SSL_REDIRECT = True # new add Github
 
 # Application definition
