@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	<!-- Site Title-->
+	<title>{% block title %}اخبار و رویداد{% endblock %}</title>
+	{% include "include/head.html" %}
+</head>
+
+<body>
+	<!-- Page-->
+	<div class="page text-center">
+		<!-- header -->
+		{% include "include/header.html" %}
+		<!-- Page Content-->
+		<main class="page-content">
+			<!-- Breadcrumbs & Page title-->
+			<section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+				<div class="shell shell-fluid">
+					<div class="range range-condensed">
+						<div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+							<p class="h3 text-white">اخبار و رویداد</p>
+							<ul class="breadcrumbs-custom offset-top-10">
+								<li><a href="{% url "home:home" %}">خانه</a></li>
+								<li class="active">اخبار و رویداد</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{% if object_list %}
+			<section class="section-50 section-sm-100">
+				<div class="shell">
+					<div class="range range-sm-center range-lg-left">
+						<div class="cell-sm-10 cell-md-8 cell-lg-7">
+							<div class="inset-left-0 inset-md-right-20">
+								<!-- Classic Thumbnail-->
+								<!-- Embed Video-->
+								<!-- Classic Soundcloud Player-->
+								<!-- Section Blog Modern-->
+								<section>
+									{% for article in object_list %}
+									<!-- Post Modern-->
+									<article class="post post-modern post-modern-timeline post-modern-timeline-left">
+										<!-- Post media-->
+										<header class="post-media">
+											{% if article.image %}
+											<img width="570" height="321" src="{{ article.image.url }}" alt="{{ article.title }}" class="img-responsive img-cover">
+											{% else %}
+											{% endif %}
+										</header>
+										<!-- Post content-->
+										<section class="post-content text-right">
+											<div class="post-meta pull-sm-left"><span class="text-middle icon-xxs mdi mdi-clock text-primary"></span>
+												<time datetime="2016-01-01" class="text-middle">
+													{{ article.get_jalail_date }}
+												</time>
+											</div>
+											<ul class="list-inline offset-top-14 offset-sm-top-0">
+												<li>
+													<div class="post-tags group-xs">
+														<a href="{% url "blog:categories" article.id %}" class="label-custom label-sm-custom label-rounded-custom label-primary text-normal">
+														{{ article.category.first }}
+													</a>
+													</div>
+												</li>
+											</ul>
+											<!-- Post Title-->
+											<div class="post-title">
+												<div class="h6 offset-top-25">
+													<a href="{% url "blog:detail" article.slug %}" class="link-default">{{ article.title }}</a>
+												</div>
+											</div>
+											<!-- Post Body-->
+											<div class="post-body offset-top-20">
+												<p>{{ article.description | truncatewords:15 }}</p>
+											</div>
+											<div class="post-author">
+												<div class="post-author-img">
+													{% if article.user.image %}
+													<img width="45" height="45" src="{{ article.user.image.url }}" alt="{{ article.user.username }}" class="img-circle">
+													{% else %}
+													<img width="45" height="45" src="{% static "images/avatar.svg" %}" alt="avatar" class="img-circle">
+													{% endif %}
+												</div>
+												<div class="post-author-name text-middle">{{ article.user.username }}
+												</div>
+											</div>
+										</section>
+									</article>
+									{% endfor %}
+								</section>
+								{% else %}
+								<section class="section-50 section-sm-100">
+									<div class="shell">
+										<div class="range range-sm-center range-lg-left">
+											<div class="cell-sm-10 cell-md-8 cell-lg-7">
+												<div class="inset-left-0 inset-md-right-20">
+													<span class="alert_danger">اخبار یا رویداد که به دنبال آن می بودید پیدا نشد؟</span>
+								{% endif %}
+								<footer class="offset-top-60 offset-lg-top-80">
+									<div class="range offset-top-60 offset-sm-top-100 range-xs-center">
+										<div class="cell-md-8">
+											<!-- Classic Pagination-->
+											{% if is_paginated %}
+											<nav>
+												<ul class="pagination-classic-variant-2">
+												{% if page_obj.has_previous %}
+												<li>
+													<a href="?page={{page_obj.previous_page_number}}" class="mdi mdi-chevron-double-right">
+													</a>
+												</li>
+												{% else %}
+												
+												{% endif %}
+												{% for i in paginator.page_range %} 
+												{% if page_obj.number == i %}
+													<li class="active"><a href="?page={{ i }}">{{i}}</a></li>
+													{% else %}
+													<li><a href="?page={{ i }}">{{i}}</a></li>
+													{% endif %}
+													{% endfor %}
+													{% if page_obj.has_next %}
+													<li>
+														<a href="?page={{page_obj.next_page_number}}" class="mdi mdi-chevron-double-left"></a>
+													</li>
+													{% else %}
+													{% endif %}
+												</ul>
+											</nav>
+											{% endif %}
+											<!-- category -->
+											{% if is_paginated %}
+											<nav>
+												<ul class="pagination-classic-variant-2">
+												{% if object_list.has_previous %}
+												<li>
+													<a href="?page={{object_list.previous_page_number}}" class="mdi mdi-chevron-double-right">
+													</a>
+												</li>
+												{% else %}
+												{% endif %}
+												{% for i in object_list.paginator.page_range %} 
+												{% if object_list.number == i %}
+													<li class="active"><a href="?page={{ i }}">{{i}}</a></li>
+													{% else %}
+													<li><a href="?page={{ i }}">{{i}}</a></li>
+													{% endif %}
+													{% endfor %}
+													{% if object_list.has_next %}
+													<li>
+														<a href="?page={{object_list.next_page_number}}" class="mdi mdi-chevron-double-left"></a>
+													</li>
+													{% else %}
+													{% endif %}
+												</ul>
+											</nav>
+											{% endif %}
+											<!-- end category -->
+											<!-- end pagination -->
+										</div>
+									</div>
+								</footer>
+							</div>
+						</div>
+						<div class="cell-md-4 offset-top-60 offset-md-top-0">
+							<div class="inset-lg-left-50">
+								{% include "include/sidebar.html" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% include "include/google_map.html" %}
+		</main>
+		<!-- Page Footers-->
+		{% include "include/footer.html" %}
+	</div>
+</body>
+</html>

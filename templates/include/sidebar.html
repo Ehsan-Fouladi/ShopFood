@@ -1,0 +1,33 @@
+{% block html %}
+<div class="cell-md-3 offset-top-60 offset-md-top-0">
+    <div class="inset-lg-left-15">
+        <!-- Section Blog Modern-->
+        <aside class="text-right">
+            <!-- Search Form-->
+            <!-- RD Search Form-->
+            <form action="{% url "blog:blog" %}" method="get" class="form-search rd-search">
+                <div class="form-group">
+                    <label for="blog-sidebar-2-form-search-widget" class="form-label form-search-label form-label-sm">جستجو</label>
+                    <input id="blog-sidebar-2-form-search-widget" type="search" name="q" autocomplete="off" class="form-search-input form-control">
+                </div>
+                <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
+            </form>
+            <div class="range offset-top-55">
+                <div class="cell-xs-6 cell-md-12">
+                    <!-- Category-->
+                    <div class="h6">دسته ها</div>
+                    <ul class="list list-marked list-marked-burnt-sienna list-bordered offset-top-10">
+                        {% for cat in categories %}
+                        <li>
+                            <a href="{% url "blog:categories" cat.id %}" class="link-default">
+                                {{ cat.blog }}
+                                <span class="text-gray-light">({{ cat.blogs.all.count }})</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<header class="bg-gray-900 w-48 h-screen left-0 top-0 p-4 rounded-l-xl overflow-hidden flex flex-col justify-between hidden" id="add-menu">
+    <div class="flex flex-col md:flex-row items-center pb-4 border-b border-b-gray-600">
+        <img src="{% static "/images/logo.jpg" %}" alt="logo" class="h-12 rounded object-cover">
+        <button type="button" class="text-2xl mr-2 text-white">
+            <i class="ri-menu-3-line" id="close-menu"></i>
+        </button>
+    </div>
+    <ul class="mt-4">
+        <li class="mb-1 {% if request.resolver_match.url_name == "home" %}group active{% endif %}">
+            <a href="{% url "home:home" %}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 duration-150 delay-150 rounded-md hover:text-gray-100 group-[.active]:bg-gray-800 group-[.active]:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" class="text-white md:ml-3 ml-1">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 1.75v6.5m4.25-5s2 1.298 2 4.75a6.25 6.25 0 1 1-12.5 0c0-3.452 2-4.75 2-4.75"/>
+                </svg>
+                <span class="text-sm">صفحه اصلی</span>
+            </a>
+        </li>
+        <li class="mb-1 {% if request.resolver_match.url_name == "panel" %}group active{% endif %}">
+            <a href="{% url "account:panel" request.user.pk %}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 duration-150 delay-150 rounded-md hover:text-gray-100 group-[.active]:bg-gray-800 group-[.active]:text-white">
+                <i class="ri-home-3-line md:ml-3 ml-1 text-lg"></i>
+                <span class="text-sm">داشتبورد</span>
+            </a>
+        </li>
+        <li class="mb-1 {% if request.resolver_match.url_name == "profile" %}group active{% endif %}">
+            <a href="{% url "account:profile" request.user.pk %}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 duration-150 delay-150 rounded-md hover:text-gray-100 group-[.active]:bg-gray-800 group-[.active]:text-white">
+                <i class="ri-profile-line md:ml-3 ml-1"></i>
+                <span class="text-sm">پروفایل</span>
+            </a>
+        </li>
+        <li class="mb-1 {% if request.resolver_match.url_name == "logout" %}group active{% endif %}">
+            <a href="{% url "account:logout" %}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 duration-150 delay-150 rounded-md hover:text-gray-100 group-[.active]:bg-gray-800 group-[.active]:text-white">
+                <i class="ri-logout-circle-r-line md:ml-3 ml-1"></i>
+                <span class="text-sm">خروج</span>
+            </a>
+        </li>
+    </ul>
+    <div class="text-center">
+        <a href="https://github.com/Ehsan-Fouladi/" target="_blank" class="text-white text-lg">
+            PanelAdmin
+        </a>
+    </div>
+</header>
+<!-- end navbar 1 -->
+<!-- navbar 2 -->
+<header class="bg-gray-900 w-30 h-screen left-0 top-0 p-4 rounded-l-xl overflow-hidden flex flex-col justify-between" id="menu">
+    <div class="text-white text-2xl text-center">
+        <button type="button">
+            <i class="ri-menu-line" id="open-menu"></i>
+        </button>
+    </div>
+    <div class="mt-20 flex flex-col items-center justify-center">
+        <a href="{% url "home:home" %}" class="rounded-full flex justify-center items-center w-12 h-12 mt-4 bg-gray-500 {% if request.resolver_match.url_name == "home" %}bg-yellow-400{% endif %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" class="text-white">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 1.75v6.5m4.25-5s2 1.298 2 4.75a6.25 6.25 0 1 1-12.5 0c0-3.452 2-4.75 2-4.75"/>
+            </svg>
+        </a>
+        <a href="{% url "account:panel" request.user.pk %}" class="rounded-full flex justify-center items-center w-12 h-12 mt-4 bg-gray-500 {% if request.resolver_match.url_name == "panel" %}bg-yellow-400{% endif %}">
+            <i class="ri-home-3-line text-3xl text-white"></i>
+        </a>
+        <a href="{% url "account:profile" request.user.pk %}" class="rounded-full flex justify-center items-center w-12 h-12 bg-gray-500 mt-4 {% if request.resolver_match.url_name == "profile" %}bg-yellow-400{% endif %}">
+            <i class="ri-profile-line text-3xl text-white"></i>
+        </a>
+        <a href="{% url "account:logout" %}" class="rounded-full flex justify-center items-center w-12 h-12 bg-gray-500 mt-4 {% if request.resolver_match.url_name == "logout" %}bg-yellow-400{% endif %}">
+            <i class="ri-logout-circle-r-line text-3xl text-white"></i>
+        </a>
+    </div>
+    <div class="text-center text-white text-4xl">
+        <a href="https://github.com/Ehsan-Fouladi/" target="_blank">
+            <i class="ri-github-fill"></i>
+        </a>
+    </div>
+</header>

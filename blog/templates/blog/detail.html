@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	<!-- Site Title-->
+	<title>{% block title %}{{ object.slug }}{% endblock %}</title>
+	{% include "include/head.html" %}
+</head>
+
+<body>
+	<!-- Page-->
+	<div class="page text-center">
+		{% include "include/header.html" %}
+		<!-- Page Content-->
+		<main class="page-content">
+			<!-- Breadcrumbs & Page title-->
+			<section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+				<div class="shell shell-fluid">
+					<div class="range range-condensed">
+						<div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+							<p class="h3 text-white">مطلب بلاگ</p>
+							<ul class="breadcrumbs-custom offset-top-10">
+								<li><a href="{% url "home:home" %}">خانه</a></li>
+								<li class="active">مطلب بلاگ</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-50 section-sm-100">
+				<div class="shell">
+					<div class="range range-xs-center">
+						<div class="cell-md-9">
+							<!-- Blog Default Single-->
+							<section>
+								<article class="post post-classic">
+									<!-- Post media-->
+									{% if object.image %}
+									<img src="{{ object.image.url }}" alt="image" width="870" height="412" class="img-responsive">
+									{% else %}
+									{% endif %}
+									<!-- Post content-->
+									<section class="post-content text-right offset-top-25">
+										<h5>{{ object.title }}</h5>
+										<ul class="list-inline list-inline-md offset-top-20 text-line-height-2">
+											<li>
+												<div class="unit unit-horizontal unit-spacing-xxs">
+													<div class="unit-right"><span class="text-base">تاریخ:</span></div>
+													<div class="unit-body">
+														<time datetime="2016-01-01">{{ object.get_jalail_date }}</time>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="unit unit-horizontal unit-spacing-xxs">
+													<div class="unit-right"><span class="text-base">توسط:</span></div>
+													<div class="unit-body"><span>{{ object.user.username }}</span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="unit unit-horizontal unit-spacing-xxs">
+													<div class="unit-right"><span class="text-base">دسته:</span></div>
+													<div class="unit-body"><a href="blog-post.html" class="link link-gray-light">{{ object.category.first }}</a></div>
+												</div>
+											</li>
+										</ul>
+										<hr class="offset-top-15">
+										<div class="offset-top-20">
+											<p class="text-base">{{ object.description }}</p>
+										</div>
+									</section>
+								</article>	
+							</section>
+						</div>
+						<!-- sidebar -->
+						{% include "include/sidebar.html" %}
+						<!-- end sidebar -->
+					</div>
+				</div>
+			</section>
+			{% include "include/google_map.html" %}
+		</main>
+		<!-- Page Footer-->
+		{% include "include/footer.html" %}
+		<!-- end footer -->
+	</div>
+</body>
+</html>

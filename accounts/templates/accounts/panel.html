@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    {% include "panel/head.html" %}
+</head>
+<body class="flex">
+    <!-- navbar 1 -->
+    {% include "panel/sidebar.html" %}
+    <!-- end navbar 2 -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}
+                {% if message.tags == "success" %}
+                <div class="absolute flex flex-row items-center bg-white drop-shadow-xl shadow-xl w-auto md:w-1/4 h-auto md:h-20 mr-2 md:mr-20 ml-2 md:ml-0 md:mx-0 mt-2 md:mt-10 rounded-xl" id="alert">
+                    <div class="bg-green-500 w-12 h-20 rounded-r-xl flex justify-center items-center"></div>
+                    <span class="font-medium text-lg mr-2">{{ message }}</span>
+                    <span class="flex items-center mr-auto mt-1 ml-3">
+                        <i class="ri-close-line text-2xl"></i>
+                    </span>
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+	{% endif %}
+    <!-- body -->
+    <div class="flex justify-center items-center w-screen overflow-hidden">
+        <main class="md:w-96 md:h-80 h-96 mt-10 md:mt-0 rounded-md shadow-lg shadow-sky-400">
+            <div class="-mt-10 flex flex-col justify-center items-center">
+                {% if object.image %}
+                <img src="{{ object.image.url }}" alt="{{ object.username }}" class="w-28 h-28 object-cover rounded-full">
+                {% else %}
+                <img src="{% static "images/avatar.svg" %}" alt="{{ object.username }}" class="w-28 h-28 object-cover rounded-full">
+                {% endif %}
+                <div class="mt-2 flex flex-col md:flex-row md:items-center">
+                    <span class="text-black text-lg font-bold">نام کاربری:</span>
+                    <span class="mr-2 text-black text-lg font-bold mt-3 md:mt-0">{{ object.username }}</span>
+                </div>
+                <div class="mt-4 flex flex-col md:flex-row md:items-center">
+                    <span class="text-black text-lg font-bold">ایمیل: </span>
+                    <span class="mr-2 text-black text-lg font-bold mt-3 md:mt-0">{{ object.email }}</span>
+                </div>
+            </div>
+            <div class="flex md:mt-32 mt-16 items-center justify-between flex-col md:flex-row">
+                <div class="mr-2">
+                    <span class="text-black text-sm font-medium text-justify">برای تغییر گذرواژه بر روی این 
+                        <a href="{% url "account:password_change" %}" class="font-bold text-lg text-red-500">لینک</a>
+                         کلید کنید.
+                    </span>
+                </div>
+                <div class="md:ml-2 mt-3 md:mt-0">
+                    {% if object.is_admin %}
+                    <span class="bg-green-500 rounded-lg py-1 px-2 text-sm text-green-200 font-medium">admin</span>
+                    {% else %}
+                    <span class="bg-gray-500 rounded-lg py-1 px-2 text-sm text-gray-300 font-medium">member</span>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- end body -->
+    
+    <script>
+        let menu = document.getElementById("menu")
+        let opens = document.getElementById("open-menu")
+        let adds = document.getElementById("add-menu")
+        let closes = document.getElementById("close-menu")
+        let alerts = document.getElementById("alert")
+        let adsTimeInSecond = 3
+        let isFocused = true
+
+        opens.addEventListener("click", ()=>{
+            menu.classList.add("hidden")
+            adds.classList.remove("hidden")
+        })
+        closes.addEventListener("click", ()=>{
+            adds.classList.add("hidden")
+            menu.classList.remove("hidden")
+        })
+        window.addEventListener("load", ()=>{
+            setTimeout(() => {
+                alerts.remove()
+            }, 2000);
+        })
+        window.addEventListener('blur', ()=>isFocused = false)
+        window.addEventListener('focus', ()=>isFocused = true)
+        const timerID = setInterval(() => {
+            if (adsTimeInSecond <= 0) {
+                clearInterval(timerID)
+                document.title = "داشتبورد"
+            }
+            if (isFocused) {
+                adsTimeInSecond--;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	<!-- Site Title-->
+	<title>500 - Internal Server Error</title>
+	{% include "include/head.html" %}
+</head>
+
+<body class="one-screen-page bg-image-2">
+	<!-- Page-->
+	<div class="page text-center">
+		<!-- Page Header-->
+		<header class="page-head">
+			<a href="{% url "home:home" %}" class="rd-navbar-brand brand">
+				<div class="brand-logo"><img src="{% static "images/brand-white-232x49.png" %}" alt="logo" width="232" height="49">
+				</div>
+			</a>
+		</header>
+		<!-- Page Content-->
+		<main class="page-content">
+			<section>
+				<div class="shell">
+					<div class="range range-condensed range-xs-center">
+						<div class="cell-sm-10 cell-lg-6">
+							<h4 class="font-default">خدمات در حال حاضر در دسترس نیست</h4>
+							<hr class="hr divider-sm bg-primary">
+							<p class="text-extra-large text-light">500</p>
+							<p class="offset-top-40">در حال حاضر سرویس پاسخ گو نمیباشد لطف بعد تلاش کنید
+								<br class="visible-lg-inline">پیشتازان صنایع غذای ارسلان</p>
+								<div class="group-lg offset-top-30">
+								<a href="{% url "home:home" %}" class="btn btn-primary btn-shape-circle btn-icon-right btn-icon">
+									<span class="icon text-middle mdi mdi-arrow-right text-black"></span>
+									<span class="text-black">بازگشت به صفحه خانه</span>
+								</a>
+								<a href="{% url "page:contact" %}" class="btn btn-white-outline btn-shape-circle btn-icon-right btn-icon"><span class="icon text-middle mdi mdi-email-outline"></span>
+									<span>تماس با ما</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+		<!-- Page Footer-->
+		<footer class="page-foot text-center">
+			<p class="copyright">تمامی حقوق این سایت محفوظ میباشد.<a href="https://github.com/Ehsan-Fouladi" target="_blank">احسان فولادی</a><span id="DateTime"></span></p>
+		</footer>
+	</div>
+	<!-- Java script-->
+	<script src="{% static "js/core.min.js" %}"></script>
+	<script src="{% static "js/script.js" %}"></script>
+	<script>
+		let timezone = document.getElementById("DateTime");
+		timezone.innerHTML = new Date().getFullYear()
+	</script>
+</body>
+</html>

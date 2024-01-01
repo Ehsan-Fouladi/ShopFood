@@ -1,0 +1,146 @@
+{% load static %}
+<!-- Page Header-->
+<header class="page-head">
+    <!-- RD Navbar-->
+    <div class="rd-navbar-wrap rd-navbar-default">
+        <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="100px" data-lg-stick-up-offset="150px" class="rd-navbar">
+            <div class="shell shell-fluid">
+                <div class="rd-navbar-inner">
+                    <div class="rd-navbar-nav-wrap-outer">
+                        <div class="rd-navbar-aside">
+                            <div class="rd-navbar-aside-content">
+                                <!-- RD Navbar Panel-->
+                                <div class="rd-navbar-panel rd-navbar-aside-right">
+                                    <!-- RD Navbar Toggle-->
+                                    <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+                                    <!-- RD Navbar Brand-->
+                                    <a href="{% url "home:home" %}" class="rd-navbar-brand brand">
+                                        <!-- <div class="brand-logo"><img src="{% static "images/brand-232x49.png" %}" alt="logo" width="232" height="49"> -->
+                                        <div class="brand-logo"><img src="{% static "images/logo.jpg" %}" alt="logo" width="232" height="100">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="rd-navbar-aside-left">
+                                    <!-- RD Navbar Aside-->
+                                    <ul class="list-links list-inline text-right">
+                                        <li>
+                                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                                <div class="unit-right"><span class="icon icon-circle icon-gray-dark icon-xxs mdi mdi-map-marker text-middle"></span></div>
+                                                <div class="unit-body">
+                                                    <address class="contact-info"><a href="#" class="link-default link-xs">بندر عباس بازار میوه تره بار جدید <br class="visible-md visible-lg">نبش خیابان دوم طبقه همکف شهرداری</a></address>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                                <div class="unit-right"><span class="icon icon-circle icon-gray-dark icon-xxs mdi mdi-phone text-middle"></span></div>
+                                                <div class="unit-body">
+                                                    <address class="contact-info"><a href="callto:#" class="link-default link-xs"><span class="ltr-text">+98 9158173211</span></a><span class="reveal-block text-base link-xs">شنبه تا پنجشنبه: 9 صبح - 6بعدظهر</span></address>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <ul class="list-inline list-inline-sm">
+                                                {% for Social in Network %}
+                                                {% if Social.instagram %}
+                                                <li>
+                                                    <a href="{{ Social.instagram }}" target="_blank" class="link-silver-light">
+                                                        <span class="icon icon-sm-mod-1 fa fa-instagram"></span>
+                                                    </a>
+                                                </li>
+                                                {% endif %}
+                                                {% if Social.telegram %}
+                                                <li>
+                                                    <a href="{{ Social.telegram }}" target="_blank" class="link-silver-light">
+                                                        <span class="icon icon-sm-mod-1 fa fa-telegram"></span>
+                                                    </a>
+                                                </li>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RD Navbar Nav-->
+                    <div class="rd-navbar-nav-wrap">
+                        <!-- RD Navbar Nav-->
+                        <ul class="rd-navbar-nav">
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url "account:logout" %}">خروج</a>
+                            </li>
+                            <li><a href="{% url "account:panel" request.user.pk %}">پنل کاربری</a>
+                            </li>
+                            {% else %}
+                            <li class="{% if request.resolver_match.url_name == "login" %}active{% endif %}">
+                                <a href="{% url "account:login" %}">ورود</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == "register" %}active{% endif %}">
+                                <a href="{% url "account:register" %}">ثبت نام</a>
+                            </li>
+                            {% endif %}
+                            <li class="{% if request.resolver_match.url_name == "home" %}active{% endif %}">
+                                <a href="{% url "home:home" %}">خانه</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == "about" %}active{% endif %}">
+                                <a href="{% url "page:about" %}">درباره ما</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == "gallery" %}active{% endif %}">
+                                <a href="{% url "product:gallery" %}">گالری</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == "contact" %}active{% endif %}">
+                                <a href="{% url "page:contact" %}">تماس</a>
+                            </li>
+                            <li class="{% if request.resolver_match.url_name == "blog" %}active{% endif %}">
+                                <a href="{% url "blog:blog" %}">اخبار و رویداد</a>
+                            </li>
+                        </ul>
+                        <div class="rd-navbar-aside-left">
+                            <ul class="list-links list-inline text-right">
+                                <li>
+                                    <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                        <div class="unit-right"><span class="icon icon-circle icon-gray-dark icon-xxs mdi mdi-map-marker text-middle"></span></div>
+                                        <div class="unit-body">
+                                            <address class="contact-info"><a href="#" class="link-default link-xs">بندر عباس بازار میوه تره بار جدید <br class="visible-md visible-lg">نبش خیابان دوم طبقه همکف شهرداری</a></address>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                        <div class="unit-right"><span class="icon icon-circle icon-gray-dark icon-xxs mdi mdi-phone text-middle"></span></div>
+                                        <div class="unit-body">
+                                            <address class="contact-info"><a href="callto:#" class="link-default link-xs"><span class="ltr-text">+98 9025672263</span></a><span class="reveal-block text-base link-xs">شنبه تا پنجشنبه: 9 صبح - 6بعدظهر</span></address>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <ul class="list-inline list-inline-sm">
+                                        {% for Social in Network %}
+                                        {% if Social.instagram %}
+                                        <li>
+                                            <a href="{{ Social.instagram }}" target="_blank" class="link-silver-light">
+                                                <span class="icon icon-sm-mod-1 fa fa-instagram"></span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% if Social.telegram %}
+                                        <li>
+                                            <a href="{{ Social.telegram }}" target="_blank" class="link-silver-light">
+                                                <span class="icon icon-sm-mod-1 fa fa-telegram"></span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Page Content-->

@@ -1,0 +1,118 @@
+{% load static %}
+<footer class="page-foot text-center text-lg-right footer-light context-dark">
+    <section class="section-top-45 section-bottom-40">
+        <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-sm-8 cell-md-10 cell-lg-6">
+                    <div class="group-md">
+                        <h5>محتوا</h5><span></span>
+                    </div>
+                    <div class="offset-top-15">
+                        <div class="form-box-shadow">
+                            <ul>
+                                <h6>
+                                    <li><a href="{% url "blog:blog" %}">اخبار و رویداد ها</a></li>
+                                    {% for Social in Network %}
+                                    {% if Social.instagram %}
+                                    <li><a href="{{ Social.instagram }}">شبکه های اجتماعی</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <li><a href="{% url "product:gallery" %}">محصولات</a></li>
+                                </h6>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-sm-6 cell-md-4 cell-lg-3 offset-top-30 offset-top-50 offset-lg-top-0">
+                    <h5>ما را دنبال کنید</h5>
+                    <ul class="list-inline offset-top-15">
+                        {% for Social in Network %}
+                        {% if Social.instagram %}
+                        <li>
+                            <a href="{{ Social.instagram }}">
+                                <span class="icon icon-sm icon-circle icon-gray icon-social fa fa-instagram">
+                                </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if Social.telegram %}
+                        <li>
+                            <a href="{{ Social.telegram }}">
+                                <span class="icon icon-sm icon-circle icon-gray icon-social fa fa-telegram">
+                                </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="cell-sm-6 cell-md-4 cell-lg-3 offset-top-50 offset-lg-top-0">
+                    <h5>تماس با ما</h5>
+                    <div class="unit unit-sm-horizontal unit-sm-top unit-spacing-xs offset-top-15">
+                        <div class="unit-right"><span class="icon icon-md-mod-1 icon-default mdi mdi-phone text-middle"></span></div>
+                        <div class="unit-body">
+                            <address class="contact-info"><a href="callto:#" class="link-white link-lg"><span class="ltr-text">+98 9158173211</span></a></address><span class="contact-info">همه روزه از ساعت 9:00–6:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="shell">
+            <hr>
+        </div>
+        <div class="shell section-20">
+            <div class="range range-xs-center">
+                <div class="cell-md-5 text-center">
+                    <p class="copyright">تمامی حقوق این سایت محفوظ میباشد.<a href="https://github.com/Ehsan-Fouladi" target="_blank">پیشتازان صنایع غذای ارسلان</a><span id="DateTime"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+<!-- Global Mailform Output-->
+<div id="form-output-global" class="snackbars"></div>
+<!-- PhotoSwipe Gallery-->
+<div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button title="بستن (Esc)" class="pswp__button pswp__button--close"></button>
+                <button title="اشتراک گذاری" class="pswp__button pswp__button--share"></button>
+                <button title="تمام صفحه" class="pswp__button pswp__button--fs"></button>
+                <button title="بزرگ/کوچک نمایی" class="pswp__button pswp__button--zoom"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+            <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__cent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Java script-->
+<script src="{% static "js/core.min.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+<script>
+    let timezone = document.getElementById("DateTime");
+    timezone.innerHTML = new Date().getFullYear()
+</script>
+<!-- java script -->

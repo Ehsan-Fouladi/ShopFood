@@ -1,0 +1,101 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	{% include "include/head.html" %}
+	<title>{% block title %}ورود | ثبت نام{% endblock %}</title>
+</head>
+
+<body>
+	<!-- Page-->
+	<div class="page text-center">
+		<!-- Page Header-->
+		
+		{% include "include/header.html" %}
+		
+		<!-- Page Content-->
+		<main class="page-content">
+			<!-- Breadcrumbs & Page title-->
+			<section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+				<div class="shell shell-fluid">
+					<div class="range range-condensed">
+						<div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+							<p class="h3 text-white">ورود/ثبت نام</p>
+							<ul class="breadcrumbs-custom offset-top-10">
+								<li><a href="{% url "home:home" %}">خانه</a></li>
+								<li class="active">ورود/ثبت نام</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Buttons-->
+			<section class="bg-white text-center section-50 section-sm-100">
+				<div class="shell">
+					<div class="range range-xs-center">
+						<div class="cell-sm-8 cell-lg-6">
+							<div class="responsive-tabs responsive-tabs-modern responsive-tabs-modern-mod-1 responsive-tabs-horizontal">
+								<ul class="resp-tabs-list">
+									<li>ثبت نام</li>
+									<li><a href="{% url "account:login" %}">ورود</a></li>
+								</ul>
+								<div class="resp-tabs-container">
+									<div>
+										<div class="group-sm">
+											<a href="{% provider_login_url 'google'%}" class="btn btn-google-plus btn-icon btn-icon-right">
+												<span class="icon icon-xs fa fa-google"></span>
+												<span>گوگل</span>
+											</a>
+										</div>
+										<div class="divider-custom offset-top-30">
+											<p class="small text-uppercase">یا</p>
+										</div>
+										<!-- RD Mailform-->
+                                        {% for error in form.errors.email %}
+                                            <div class="alert_danger">
+                                                <span>{{ error }}</span>
+                                            </div>
+                                        {% endfor %}
+                                        {% for error in form.errors.password2 %}
+                                            <div class="alert_danger">
+                                                <span>{{ error }}</span>
+                                            </div>
+                                        {% endfor %}
+										<form method="post" class="rd-mailform form-register text-center offset-top-20">
+											{% csrf_token %}
+											<div class="form-group">
+												<label for="register-form-username" class="form-label form-label-outside">نام کاربری</label>
+												{{ form.username }}
+											</div>
+											<div class="form-group">
+												<label for="register-form-email" class="form-label form-label-outside">ایمیل</label>
+												{{ form.email }}
+											</div>
+											<div class="form-group">
+												<label for="register-form-password" class="form-label form-label-outside">رمز عبور</label>
+												{{ form.password1 }}
+											</div>
+											<div class="form-group">
+												<label for="register-form-password-confirm" class="form-label form-label-outside">تایید رمز عبور</label>
+												{{ form.password2 }}
+											</div>
+											<div class="offset-top-50">
+												<button type="submit" class="btn btn-primary btn-fullwidth btn-shadow">ثبت نام</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% include "include/google_map.html" %}
+		</main>
+		<!-- Page Footer-->
+		{% include "include/footer.html" %}
+		<!-- end Footer -->
+	</div>
+</body>
+</html>

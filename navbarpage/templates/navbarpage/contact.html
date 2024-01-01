@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	<!-- Site Title-->
+	<title>{% block title %}تماس با ما{% endblock %}</title>
+	{% include "include/head.html" %}
+</head>
+
+<body>
+	<!-- Page-->
+	<div class="page text-center">
+		<!-- Page Header-->
+		{% include "include/header.html" %}
+		<!-- Page Content-->
+		<main class="page-content">
+			<!-- Breadcrumbs & Page title-->
+			<section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+				<div class="shell shell-fluid">
+					<div class="range range-condensed">
+						<div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+							<p class="h3 text-white">تماس</p>
+							<ul class="breadcrumbs-custom offset-top-10">
+								<li><a href="{% url "home:home" %}">خانه</a></li>
+								<li class="active">تماس</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="text-center text-sm-right section-50 section-sm-top-100 section-sm-bottom-100">
+				<div class="shell">
+					<div class="range range-xs-center">
+						<div class="cell-md-8">
+							<h4 class="font-default text-center">با ما در ارتباط باشید</h4>
+							<p class="text-center">با سلام و احترام به شما خوش آمد می‌گوئیم! از همکاری و ارتباط مستمر با شما به عنوان یکی از ارزشمندترین اعضای جامعه‌ی ما خرسندیم؛ لطفاً هرگونه پیشنهاد، نظر یا سوالی که در ذهن دارید، با ما به اشتراک بگذارید تا ما با بهترین توانایی خود، خدماتی خود و مطابق با انتظارات شما فراهم آوریم.</p>
+							<!-- RD Mailform-->
+							<form data-form-output="form-output-global" data-form-type="contact-with-phone" method="post" class="rd-mailform form-contact-line text-right offset-top-35">
+								{% csrf_token %}
+								<div class="form-inline-flex">
+									<div class="form-group">
+										<label for="contact-name" class="form-label form-label-outside">نام</label>
+										{{ form.name }}
+									</div>
+									<div class="form-group">
+										<label for="contact-phone" class="form-label form-label-outside">تلفن</label>
+										{{ form.phone }}
+									</div>
+								</div>
+								<div class="form-group offset-top-15">
+									<label for="message" class="form-label form-label-outside">پیام شما</label>
+									{{ form.subject }}
+								</div>
+								<div class="offset-top-15">
+									<div class="form-inline-flex">
+										<div class="form-group">
+											<label for="contact-email-2" class="form-label form-label-outside">ایمیل</label>
+											{{ form.email }}
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary btn-fullwidth">ارسال پیام</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="cell-md-4 offset-top-50 offset-md-top-0 text-right">
+							<aside class="inset-lg-left-70">
+								<div class="range">
+									<div class="cell-xs-6 cell-md-12 offset-top-50 offset-xs-top-0 offset-md-top-50">
+										<div class="h6">تلفن</div>
+										<div class="text-subline offset-top-15"></div>
+										<div class="offset-top-25">
+											<div class="unit unit-horizontal unit-middle unit-spacing-xs">
+												<div class="unit-right"><span class="icon icon-xs icon-primary text-middle mdi mdi-phone"></span></div>
+												<div class="unit-body"><a href="callto:#" class="link-default"><span class="ltr-text">+98 9025672263</span></a></div>
+											</div>
+										</div>
+									</div>
+									<div class="cell-xs-6 cell-md-12 offset-top-50">
+										<div class="h6">آدرس</div>
+										<div class="text-subline offset-top-15"></div>
+										<div class="offset-top-25 unit unit-horizontal unit-spacing-xs">
+											<div class="unit-right"><span class="icon icon-xs icon-primary text-middle mdi mdi-map-marker"></span></div>
+											<div class="unit-body"><p class="text-dark">بندر عباس بازار میوه تره بار جدید 
+												نبش خیابان دوم طبقه همکف شهرداری
+											</p></div>
+										</div>
+									</div>
+									<div class="cell-xs-6 cell-md-12 offset-top-50">
+										<div class="h6">ساعات کاری</div>
+										<div class="text-subline offset-top-15"></div>
+										<div class="offset-top-25 unit unit-horizontal unit-spacing-xs">
+											<div class="unit-right"><span class="icon icon-xs icon-primary mdi mdi-clock text-middle"></span></div>
+											<div class="unit-body"><span class="text-dark inset-left-5">شنبه تا پنجشنبه - 9 صبح الی 6 بعدظهر</span></div>
+										</div>
+									</div>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% include "include/google_map.html" %}
+		</main>
+		<!-- Page Footer-->
+		{% include "include/footer.html" %}
+		<!-- end footer -->
+	</div>
+</body>
+</html>
