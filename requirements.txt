@@ -6,7 +6,7 @@ charset-normalizer==3.3.2
 colorama==0.4.6
 cryptography==41.0.7
 defusedxml==0.7.1
-Django==4.2.8
+Django==4.1.2
 django-allauth==0.59.0
 django-auto-logout==0.5.1
 django-cleanup==8.0.0
