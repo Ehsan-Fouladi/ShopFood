@@ -12,7 +12,7 @@
                                 <!-- RD Navbar Panel-->
                                 <div class="rd-navbar-panel rd-navbar-aside-right">
                                     <!-- RD Navbar Toggle-->
-                                    <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+                                    <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle" title="Menu"><span></span></button>
                                     <!-- RD Navbar Brand-->
                                     <a href="{% url "home:home" %}" class="rd-navbar-brand brand">
                                         <!-- <div class="brand-logo"><img src="{% static "images/brand-232x49.png" %}" alt="logo" width="232" height="49"> -->
@@ -120,14 +120,14 @@
                                         {% for Social in Network %}
                                         {% if Social.instagram %}
                                         <li>
-                                            <a href="{{ Social.instagram }}" target="_blank" class="link-silver-light">
+                                            <a href="{{ Social.instagram }}" target="_blank" class="link-silver-light" title="Link">
                                                 <span class="icon icon-sm-mod-1 fa fa-instagram"></span>
                                             </a>
                                         </li>
                                         {% endif %}
                                         {% if Social.telegram %}
                                         <li>
-                                            <a href="{{ Social.telegram }}" target="_blank" class="link-silver-light">
+                                            <a href="{{ Social.telegram }}" target="_blank" class="link-silver-light" title="Link">
                                                 <span class="icon icon-sm-mod-1 fa fa-telegram"></span>
                                             </a>
                                         </li>

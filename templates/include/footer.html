@@ -9,8 +9,8 @@
                     </div>
                     <div class="offset-top-15">
                         <div class="form-box-shadow">
-                            <ul>
-                                <h6>
+                            <h6>
+                                <ul>
                                     <li><a href="{% url "blog:blog" %}">اخبار و رویداد ها</a></li>
                                     {% for Social in Network %}
                                     {% if Social.instagram %}
@@ -18,8 +18,8 @@
                                     {% endif %}
                                     {% endfor %}
                                     <li><a href="{% url "product:gallery" %}">محصولات</a></li>
-                                </h6>
-                            </ul>
+                                </ul>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         {% for Social in Network %}
                         {% if Social.instagram %}
                         <li>
-                            <a href="{{ Social.instagram }}">
+                            <a href="{{ Social.instagram }}" title="Link">
                                 <span class="icon icon-sm icon-circle icon-gray icon-social fa fa-instagram">
                                 </span>
                             </a>
@@ -37,7 +37,7 @@
                         {% endif %}
                         {% if Social.telegram %}
                         <li>
-                            <a href="{{ Social.telegram }}">
+                            <a href="{{ Social.telegram }}" title="Link">
                                 <span class="icon icon-sm icon-circle icon-gray icon-social fa fa-telegram">
                                 </span>
                             </a>
