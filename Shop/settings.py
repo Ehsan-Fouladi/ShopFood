@@ -13,8 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False # new add github
-DEBUG = True
+DEBUG = False # new add github
+# DEBUG = True
 
 ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
 CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
