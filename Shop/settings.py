@@ -16,9 +16,9 @@ SECRET_KEY = config("SECRET_KEY")
 # DEBUG = False # new add github
 DEBUG = True
 
-# ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
-# CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
+CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
+# ALLOWED_HOSTS = []
 # SECURE_SSL_REDIRECT = True # new add Github
 
 # Application definition
@@ -88,22 +88,22 @@ WSGI_APPLICATION = 'Shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql', 
-#         'NAME': 'mysqlvjt_db',
-#         'USER': 'root',
-#         'PASSWORD': 'eJ8b3VbuIWIv3Jd!jDqe',
-#         'HOST': 'mysql-ndh-service',
-#         'PORT': '3306',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'mysqlvjt_db',
+        'USER': 'root',
+        'PASSWORD': 'eJ8b3VbuIWIv3Jd!jDqe',
+        'HOST': 'mysql-ndh-service',
+        'PORT': '3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
