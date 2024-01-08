@@ -87,14 +87,17 @@
                             <li class="{% if request.resolver_match.url_name == "about" %}active{% endif %}">
                                 <a href="{% url "page:about" %}">درباره ما</a>
                             </li>
+                            <li class="{% if request.resolver_match.url_name == "team" %}active{% endif %}">
+                                <a href="{% url "page:team" %}">تیم ما</a>
+                            </li>
                             <li class="{% if request.resolver_match.url_name == "gallery" %}active{% endif %}">
                                 <a href="{% url "product:gallery" %}">گالری</a>
                             </li>
                             <li class="{% if request.resolver_match.url_name == "contact" %}active{% endif %}">
-                                <a href="{% url "page:contact" %}">تماس</a>
+                                <a href="{% url "page:contact" %}">ارتباط با بندرویچ</a>
                             </li>
                             <li class="{% if request.resolver_match.url_name == "blog" %}active{% endif %}">
-                                <a href="{% url "blog:blog" %}">اخبار و رویداد</a>
+                                <a href="{% url "blog:blog" %}">اخبار و رویدادها</a>
                             </li>
                         </ul>
                         <div class="rd-navbar-aside-left">

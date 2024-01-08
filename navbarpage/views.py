@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import FormView, ListView
+from django.views.generic import FormView, ListView, TemplateView, DetailView
 from django.urls import reverse_lazy
 from .forms import ContactForm
 from .models import AboutModel, OurStory, OurPartners, OurTeam
@@ -23,4 +23,11 @@ class AboutView(ListView):
         context["Partners"] = OurPartners.objects.all()
         context["Team"] = OurTeam.objects.all().order_by("-create_at")
         return context
-    
+
+class TeamView(ListView):
+    template_name = "navbarpage/team.html"
+    model = OurTeam
+
+class ProfileTeamView(DetailView):
+    template_name = "navbarpage/member-profile.html"
+    model = OurTeam

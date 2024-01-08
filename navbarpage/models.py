@@ -50,6 +50,12 @@ class OurPartners(models.Model):
 class OurTeam(models.Model):
     name = models.CharField(max_length=50, verbose_name="نام")
     silence = models.CharField(max_length=70, verbose_name="صمت فرد")
+    gmail = models.EmailField(verbose_name="ایمیل")
+    your_about = models.TextField(verbose_name="درباره خود")
+    work_about = models.TextField(verbose_name="درباره مدرک یا کار های که کردین")
+    evidence = models.ImageField(upload_to="team/evidence/", verbose_name="عکس مدرک", null=True, blank=True)
+    evidence_two = models.ImageField(upload_to="team/evidence1/", verbose_name="2عکس مدرک", null=True, blank=True)
+    evidence_three = models.ImageField(upload_to="team/evidence2/", verbose_name="3عکس مدرک", null=True, blank=True)
     image = models.ImageField(upload_to="about/team/", verbose_name="عکس")
     instagram = models.CharField(max_length=256, verbose_name="لینک اینستاگرام", blank=True, null=True)
     telegram = models.CharField(max_length=256, verbose_name="لینک تلگرام", blank=True, null=True)

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="wide wow-animation">
+
+<head>
+	<!-- Site Title-->
+	<title>{{ object.name }}</title>
+	{% include "include/head.html" %}
+</head>
+
+<body>
+	<!-- Page-->
+	<div class="page text-center">
+		<!-- Page Header-->
+		{% include "include/header.html" %}
+		<!-- Page Content-->
+		<main class="page-content">
+			<!-- Breadcrumbs & Page title-->
+			<section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+				<div class="shell shell-fluid">
+					<div class="range range-condensed">
+						<div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+							<p class="h3 text-white">پروفایل</p>
+							<ul class="breadcrumbs-custom offset-top-10">
+								<li><a href="{% url "home:home" %}">خانه</a></li>
+								<li><a href="{% url "page:team" %}">تیم ما</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-top-50 section-sm-top-100">
+				<div class="shell">
+					<div class="range range-xs-center">
+						<div class="cell-sm-7 cell-md-6">
+							<div class="img-thumbnail-custom"><img src="{{ object.image.url }}" alt="{{object.name}}" width="569" height="656" class="img-responsive">
+								<div class="caption">
+									<div class="group-lg">
+										<ul class="list-inline text-middle">
+											{% if object.instagram %}
+											<li>
+												<a href="{{ object.instagram }}" class="link-white icon icon-sm icon-circle fa fa-instagram"></a>
+											</li>
+											{% endif %}
+											{% if object.telegram %}
+											<li>
+												<a href="{{ object.telegram }}" class="link-white icon icon-xs icon-circle fa fa-telegram"></a>
+											</li>
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cell-sm-7 cell-md-6 text-sm-right offset-sm-top-30 offset-md-top-0">
+							<div class="inset-lg-left-70">
+								<div class="reveal-md-flex range-md-justify range-md-middle">
+									<h4 class="font-default">{{ object.name }}</h4>
+									<div class="team-member-position offset-top-10 offset-md-top-0"><span class="big text-middle">{{ object.silence }}</span></div>
+								</div>
+								<div class="offset-top-30 offset-md-top-15 text-line-height-2">
+									<ul class="list-inline list-inline-sm">
+										<li>
+											<div class="unit unit-horizontal unit-middle unit-spacing-xs">
+												<div class="unit-right"><span class="icon icon-xs text-primary mdi mdi-email-outline text-middle"></span></div>
+												<div class="unit-body"><a href="#" class="link-default"><span>{{ object.gmail }}</span></a></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<p class="offset-top-20">{{ object.your_about }}</p>
+								<div class="offset-top-30">
+									<!-- Blockquote default-->
+									<blockquote class="quote-default quote-default-left">
+										<div class="quote-body">
+											<div class="unit unit-xs-horizontal unit-xs-top unit-spacing-sm">
+												<div class="unit-right">
+													<svg x="0px" y="0px" width="37px" height="27px" viewbox="0 0 37 27">
+														<path d="M16.916,18.73c0,2.351-0.833,4.319-2.499,5.901C12.754,26.208,10.786,27,8.516,27  c-2.268,0-4.255-0.792-5.96-2.369c-1.703-1.582-2.552-3.477-2.552-5.679c0-2.208,1.022-4.891,3.064-8.054L9.879-0.018h6.585  l-4.202,11.471C15.365,12.847,16.916,15.275,16.916,18.73z M36.99,18.73c0,2.351-0.833,4.319-2.499,5.901  C32.828,26.208,30.86,27,28.588,27c-2.269,0-4.256-0.792-5.959-2.369c-1.702-1.582-2.555-3.477-2.555-5.679  c0-2.208,1.025-4.891,3.066-8.054l6.813-10.916h6.581l-4.197,11.471C35.437,12.847,36.99,15.275,36.99,18.73z"></path>
+													</svg>
+												</div>
+												<div class="unit-body">
+													<p class="h5 text-light">
+														<q>مدرک و افتخارات و کارآفرینی</q>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="quote-footer">
+											<cite></cite>
+										</div>
+									</blockquote>
+									<p class="offset-top-30">{{ object.work_about }}</p>
+								</div>
+								<!-- PhotoSwipe-->
+								<div data-photo-swipe-gallery="gallery" class="range range-xs-center gallery-wrap offset-top-20">
+									{% if object.evidence %}
+									<div class="cell-xs-6 cell-sm-4">
+										<a data-photo-swipe-item="" data-size="847x1200" href="{{ object.evidence.url }}" class="img-wrap-mod-2">
+											<span class="icon icon-xs fa fa-search-plus icon-white"></span>
+											<img width="105" height="150" src="{{ object.evidence.url }}" alt="Images" class="img-responsive">
+										</a>
+									</div>
+									{% endif %}
+									{% if object.evidence_two %}
+									<div class="cell-xs-6 cell-sm-4">
+										<a data-photo-swipe-item="" data-size="847x1200" href="{{ object.evidence_two.url }}" class="img-wrap-mod-2">
+											<span class="icon icon-xs fa fa-search-plus icon-white"></span>
+											<img width="105" height="150" src="{{ object.evidence_two.url }}" alt="Images" class="img-responsive">
+										</a>
+									</div>
+									{% endif %}
+									{% if object.evidence_two %}
+									<div class="cell-xs-6 cell-sm-4">
+										<a data-photo-swipe-item="" data-size="847x1200" href="{{ object.evidence_three.url }}" class="img-wrap-mod-2">
+											<span class="icon icon-xs fa fa-search-plus icon-white"></span>
+											<img width="105" height="150" src="{{ object.evidence_three.url }}" alt="Images" class="img-responsive">
+										</a>
+									</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Page Footer-->
+		{% include "include/footer.html" %}
+	</div>
+</body>
+</html>
