@@ -13,11 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # new add github
+DEBUG = True # new add github
 # DEBUG = True
 
-ALLOWED_HOSTS = ["www.banderovich.ir", "banderovich.ir"]  # new add github
-CSRF_TRUSTED_ORIGINS = ['https://banderovich.ir', 'https://www.banderovich.ir']
+ALLOWED_HOSTS = []  # new add github
+CSRF_TRUSTED_ORIGINS = []
 # ALLOWED_HOSTS = []
 # SECURE_SSL_REDIRECT = True # new add Github
 
@@ -97,11 +97,11 @@ WSGI_APPLICATION = 'Shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'mysqlvjt_db',
-        'USER': 'root',
-        'PASSWORD': 'eJ8b3VbuIWIv3Jd!jDqe',
-        'HOST': 'mysql-ndh-service',
-        'PORT': '3306',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -140,10 +140,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 MEDIA_URL= 'media/'
 MEDIA_ROOT= BASE_DIR / 'media/'
-STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
